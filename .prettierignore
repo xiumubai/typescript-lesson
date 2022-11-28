@@ -1,0 +1,8 @@
+build
+dist
+out
+
+# *.ts
+# *.tsx
+# *.jsx
+# *.js

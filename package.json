@@ -4,7 +4,22 @@
   "description": "typescript学习代码",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "eslint": "eslint src/** --ext .js, .jsx, .ts, .tsx --cache",
+    "eslint:fix": "npm run eslint -- --fix",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "lint": "npm run eslint && npm run prettier",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --cache --fix",
+      "prettier --write --list-different"
+    ],
+    "*.{json,md,html,css,scss,sass,less,styl}": [
+      "prettier --write --list-different"
+    ]
   },
   "repository": {
     "type": "git",
@@ -16,5 +31,16 @@
   "bugs": {
     "url": "https://github.com/xiumubai/typescript-lesson/issues"
   },
-  "homepage": "https://github.com/xiumubai/typescript-lesson#readme"
+  "homepage": "https://github.com/xiumubai/typescript-lesson#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.31.11",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.4",
+    "prettier": "^2.8.0",
+    "typescript": "^4.9.3"
+  }
 }
